@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+.header {
+  background-image: url('./assets/head_background.JPG');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: white;
+  padding: 30px;
+  text-align: left;
+}
+
+.navbar {
+  display: flex;
+  background-color: #333;
+}
+
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.row {
+  display: flex;
+}
+
+.side {
+  flex: 30%;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.main {
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+td {
+  vertical-align: top;
+}
+
+.footer {
+  padding: 10px;
+  text-align: center;
+  background: #ddd;
+}
+
+@media screen and (orientation: portrait) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .navbar {
+    flex-direction: column;
+  }
+  .header {
+    padding: 10px;
+    background-image: url('./assets/mobile_background.JPG');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+}
+
+@media print {
+  .header, .footer, .navbar, .side {
+    display: none;
+  }
+}
