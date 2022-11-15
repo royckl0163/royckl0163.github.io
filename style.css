@@ -66,6 +66,20 @@ td {
   background: #ddd;
 }
 
+figure {
+  border: 1px #cacaca solid;
+  padding: 4px;
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 2px;
+}
+.justify {
+  text-align: justify;
+}
+
 @media screen and (orientation: portrait) {
   .row {
     flex-direction: column-reverse;
