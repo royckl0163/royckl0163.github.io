@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Roy Cheung's Personal Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Final Year Project (FYP) - Fish Recognition System</h1>
+  </div>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="projects.html"><span>&#8592;</span> Back to Project Overview Page</a>
+    <a href="index.html">Home</a>
+    <a href="academic.html">Education</a>
+    <a href="experience.html">Experience</a>
+  </div>
+  
+  <!-- The flexible grid (content) -->
+  <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+  <div class="row">
+	
+	  <div class="main">
+
+      <div class="section">
+        <p class="justify">
+          The system focuses on developing a fish recognition system using machine learning (ML), which comprises two models: the fish detection model and the fish recognition model.
+          A Flask API will be built as a connection bridge between the two models.
+          A mobile application is developed for putting data into the API and displaying results to users.
+          The system architecture is shown below:
+        </p>
+        <figure>
+          <img src = "./assets/fish_recog_struct.jpg" height="250px" alt="The system architecture of Fish Recognition System"></img>
+          <figcaption>The system architecture of Fish Recognition System</figcaption>
+        </figure>
+
+        <h2>Fish Detection Model</h2>
+        <p class="justify">
+          When a user capture an image from the fish tank, the fish detection model will determine the number of fishes inside the photo.
+          It will then crop the photo into small pieces according to the bounding box area inside the model response and put into the recognition model.
+        </p>
+        <figure>
+          <img src = "./assets/fish_recog_process.jpg" height="300px" alt="Demonstration of the model cropping image"></img>
+          <figcaption>Demonstration of the model cropping image</figcaption>
+        </figure>
+        <p class="justify">
+          As shown above, the model recognised there are three fishes in the image. 
+          A bonding box has incidiated the location of the fish, which aids the API to crop out the image into three small pieces according to the box area. 
+          It will be introduced in the later part.
+        </p>
+
+        <h2>Fish Recognition Model</h2>
+        <p class="justify">
+          The cropped images will be put into the recognition model one by one to retrieve the fish name.
+          All the result will be returned to the mobile application as a JSON data for result displayment.
+        </p>
+        <figure>
+          <div class="container">
+            <img src = "./assets/fish_recog_result1.png" height="120px" alt="Demonstration of the model recognising fishes" style="padding: 0px 20px 0px 0px;"></img>
+            <img src = "./assets/fish_recog_result2.png" height="120px" alt="Demonstration of the model recognising fishes"></img>  
+          </div>
+          <figcaption>Demonstration of the model recognising fishes</figcaption>
+        </figure>
+      
+        <h2>Flask REST API</h2>
+        <p class="justify">
+          The API serves as a bridge for accessing the two ML models. It combines the two models’
+          endpoint POST method into one to optimise the system operation time. It is developed using
+          Flask in Python.
+        </p>
+        <p class="justify">
+          Besides, the API uses Python libraries to crop the original photo into small pieces according to the bounding box area provided by the detection model’s response 
+          and put it into the recognition model. In this way, it can also increase the accuracy of the recognition model.
+        </p>
+
+        <h2>Mobile Application (App)</h2>
+        <p class="justify">
+          The mobile application is the central controller and also the only frontend part of the system.
+          Users can pass the photo sample to the backend part either by capturing instant photo or upload a image they would be the system to handle. 
+          It will then send to the API for accessing the two models and retrieving the result to be displayed in the App.
+        </p>
+        <figure>
+          <img src = "./assets/fish_recog_app.png" height="300px" alt="Demonstration of result displayment after the API processed"></img>
+          <figcaption>Demonstration of result displayment after the API processed</figcaption>
+        </figure>
+
+        <h2>Demonstration</h2>
+        <p class="justify">
+          Below is a demonstration on using the system:
+        </p>
+        <div style="text-align: center;">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/UzMfoKzJbBI" title="Demonstration on Fish Recognition System" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+	
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <h4>Copyright © 2022 All Rights Reserved</h4>
+  </div>
+  
+  <script src="javascript.js"></script>
+  
+</body>
+</html>
