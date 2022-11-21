@@ -76,8 +76,53 @@ figcaption {
   font-style: italic;
   padding: 2px;
 }
+
 .justify {
   text-align: justify;
+}
+
+.btn {
+  display: inline-block;
+  width: 40%;
+  border: none;
+  background-color: grey;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0px 10px;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.container {
+  text-align: center;
+}
+
+#topBtn {
+  display: none;
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#topBtn:hover {
+  background-color: #555;
 }
 
 @media screen and (orientation: portrait) {
@@ -93,7 +138,21 @@ figcaption {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
 
+  figure > img {
+    max-width: 100%;
+    height: auto;
+  }
+  .container > img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  iframe{
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    height: 100%;
   }
 }
 
