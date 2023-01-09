@@ -29,9 +29,100 @@
 	  <div class="main">
 
       <div class="section">
-        <h2>Automatic Feeding System</h2>
-        <center>Coming Soon</center>
+        <p class="justify">
+          The system focuses on developing an automatic feeding system with the use of Internet of Things (IoT).
+          A hardware will be built using some robotics components and hanged aside the fish tank.
+          A mobile application is developed for displaying the system’s current status and sending manual feeding request to the hardware.
+          A mobile notification will be pushed every time after the feeding request is completed.
+          The system will feed the tank under the following situation:
+          <ol>
+            <li>when the scheduled time reached;</li>
+            <li>when users press the button in the mobile app; or</li>
+            <li>when users press the attached robotics components</li>
+          </ol>
+          The system architecture is shown below:
+        </p>
+        <figure>
+          <img src = "./assets/auto_feed_struct.jpg" height="230px" alt="The system architecture of Automatic Feeding System"></img>
+          <figcaption>The system architecture of Automatic Feeding System</figcaption>
         </figure>
+
+        <h2>Hardware Architecture</h2>
+        <p class="justify">
+          The hardware comprises several robotics components: a touch sensor (for sending manual feeding request) and
+          a servo motor (for rotating the feeding box and feed the fish tank). 
+          All the components are connected to an ESP32 circuit board called Studuino:Bit, which is a product from Artec Co., Ltd.
+          The Studuino:Bit contains a built-in Bluetooth and Wifi and can be programmed in Python.
+        </p>
+        <p class="justify">
+          Besides the robotics part, the hardware also consists of a ready-made feeding box and a base which is built by Artec blocks. 
+          It is designed for mounting aside the tank.
+        </p>
+        <figure>
+          <img src = "./assets/auto_feed_hardware.jpg" height="250px" alt="The hardware design of Automatic Feeding System"></img>
+          <figcaption>The hardware design of Automatic Feeding System</figcaption>
+        </figure>
+
+        <h2>Realtime Database</h2>
+        <p class="justify">
+          The realtime database stores the latest information regarding the system, including the system status, the last and next feeding time.
+          All the feeding requests (including manual and auto) will be passed to the database, thereby changing the system status. 
+          The Studuino:Bit will obtain this information instantly from the database and handle the request.
+          After the request is dealt with, the database will be updated.
+        </p>
+
+        <h2>Mobile Application (App) & Notification</h2>
+        <p class="justify">
+          The mobile application used to display the system’s current feeding schedule and send manual feeding request to the system when the user intend to change the feeding time.
+          It also controls the status of the notification pushing service according to the users’ choice.
+        </p>
+        <p class="justify">
+          Users can send instant manual feeding request or reschedule the next feeding time from the App even if they are not in the same network connection as the system. 
+          If the rescheduled time is too close from last feeding one, an alert message will be poped out inside the app, informing user the request has been denied. 
+          (Every feeding request should have a 3-hour gap in between.)
+          After handling the feeding request, the app will automatically update the latest and next feeding time.
+        </p>
+        <figure>
+          <img src = "./assets/auto_feed_app1.png" height="300px" alt="Application interfaces while handling feeding request"></img>
+          <figcaption>Application interfaces while handling feeding request</figcaption>
+        </figure>
+        <br>
+        <figure>
+          <img src = "./assets/auto_feed_app2.png" height="250px" alt="Pop-up alert on the application when feeding request failed"></img>
+          <figcaption>Pop-up alert on the application when feeding request failed</figcaption>
+        </figure>
+        <p class="justify">
+          The system will send a POST request to the notification platform after handling the feeding request, 
+          and the platform will push a mobile notification according to the request’s result.
+          Inside the notification, it contains the result of the feeding request. 
+          If the request fails, a reason will be included. 
+          More importantly, a timestamp will be included indicating the time of handling the request. 
+          If users do not want to receive the notification, it can be switched off through the developed mobile application.
+        </p>
+        <figure>
+          <img src = "./assets/auto_feed_app3.png" height="200px" alt="Notifications pushed after handling the feeding request"></img>
+          <figcaption>Notifications pushed after handling the feeding request</figcaption>
+        </figure>
+
+        <h2>Demonstration</h2>
+        <p class="justify">
+          Below is a demonstration on the system:
+        </p>
+        <div style="text-align: center;">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/YasoQRYGxyQ" title="Demonstration on Automatic Feeding System" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <br>
+        <hr>
+        <p class="justify"><i>Click to check another system below:</i></p>
+        <div class="container">
+          <button onclick="window.location.href='fish_recog.html';" class="btn">
+            Fish Recognition System
+          </button>
+          <button onclick="window.location.href='auto_feed.html';" class="btn" disabled>
+            Automatic Feeding System
+          </button>
+        </div>
 
       </div>
 

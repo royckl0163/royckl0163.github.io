@@ -35,14 +35,48 @@
           It aims to integrate the concept of Artificial Intelligence (AI) and the Internet of Things (IoT) into a fish tank, which will then be used to facilitate and promote STEAM (Science, Technology, Engineering, Arts, and Mathematics) teaching at schools.
         </p>
         <p class="justify">
-
+          The project involves developing two systems, fish recogition system and automatic feeding system.
+          For the recogition system, all data is collected from the fish tank inside MKP to build the AI models and the fish information library;
+          For the feeding system, the hardware prototype is built based on the MKP fish tank as well.
         </p>
-        <figure>
-          <img src = "./assets/fyp_poster.jpg" height="400px" alt="Poster designed for introducing the project during the Semi-final Project Competition 2021"></img>
-          <figcaption>Poster designed for introducing the project during the Semi-final Project Competition 2021</figcaption>
-        </figure>
+
+        <div class="slidesContainer" ontouchstart="showSlidesMobile()">
+
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+              <figure>
+                <img src = "./assets/mkp_tank.png" height="400px" alt="Overview of the fish tank inside MKP"></img>
+                <figcaption>Overview of the fish tank inside MKP</figcaption>
+              </figure>
+            </div>
+          
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+              <figure>
+                <img src = "./assets/mkp_fish_info.png" height="400px" alt="Labels glued on the tank letting students to learn about the fishes"></img>
+                <figcaption>Labels glued on the tank letting students to learn about the fishes</figcaption>
+              </figure>
+          </div>
+          
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+              <figure>
+                <img src = "./assets/fyp_poster.jpg" height="400px" alt="Poster designed for introducing the project during the Semi-final Project Competition 2021"></img>
+                <figcaption>Poster designed for introducing the project during the Semi-final Project Competition 2021</figcaption>
+              </figure>
+          </div>
+          
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+
+          <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+        </div>
         
-        <p class="justify">The project involves developing two systems, which will be introduced one by one below:</p>
+        <p class="justify">The two systems will be introduced one by one below:</p>
         <div class="container">
           <button onclick="window.location.href='fish_recog.html';" class="btn">
             Fish Recognition System

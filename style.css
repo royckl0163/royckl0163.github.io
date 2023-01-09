@@ -12,7 +12,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   color: white;
   padding: 30px;
   text-align: left;
@@ -29,6 +28,7 @@ body {
   text-decoration: none;
   text-align: center;
 }
+
 .navbar a:hover {
   background-color: #ddd;
   color: black;
@@ -46,13 +46,8 @@ body {
 
 .main {
   flex: 70%;
-  background-color: white;
-  padding: 20px;
-}
-
-.fakeimg {
-  background-color: #aaa;
   width: 100%;
+  background-color: white;
   padding: 20px;
 }
 
@@ -64,17 +59,6 @@ td {
   padding: 10px;
   text-align: center;
   background: #ddd;
-}
-
-figure {
-  border: 1px #cacaca solid;
-  padding: 4px;
-  text-align: center;
-}
-
-figcaption {
-  font-style: italic;
-  padding: 2px;
 }
 
 .justify {
@@ -89,7 +73,7 @@ li {
   display: inline-block;
   width: 40%;
   border: none;
-  background-color: grey;
+  background-color: rgba(0, 0, 255, 0.850);
   color: white;
   padding: 14px 28px;
   font-size: 16px;
@@ -104,8 +88,99 @@ li {
   color: black;
 }
 
+.btn:disabled,
+.btn[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 .container {
   text-align: center;
+}
+
+.slidesContainer {
+  max-width: 100%;
+  position: relative;
+  margin-left: 35px;
+  margin-right: 35px;
+  text-align: center;
+  border: 1px #cacaca solid;
+}
+
+.mySlides {
+  display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  padding: 16px;
+  margin-top: -250px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.numbertext {
+  font-size: 12px;
+  padding: 10px 10px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #d1d1d175;
+  margin: 5px 10px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+figure {
+  text-align: center;
+  margin: 5px 40px;
+}
+
+figcaption {
+  font-style: italic;
+  padding-top: 5px;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
 }
 
 #topBtn {
@@ -117,6 +192,7 @@ li {
   right: 30px;
   z-index: 99;
   font-size: 16px;
+  text-align: center;
   border: none;
   outline: none;
   background-color: red;
@@ -148,6 +224,7 @@ li {
     max-width: 100%;
     height: auto;
   }
+
   .container > img {
     max-width: 100%;
     height: auto;
@@ -157,6 +234,10 @@ li {
     aspect-ratio: 16 / 9;
     max-width: 100%;
     height: 100%;
+  }
+
+  .prev, .next {
+    display: none;
   }
 }
 
