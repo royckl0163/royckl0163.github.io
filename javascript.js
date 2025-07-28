@@ -15,45 +15,85 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-let slideIndex = 1;
-showSlides(slideIndex);
+let slideIndex = 0;
+let slides = document.getElementsByClassName("slide");
+let slideInterval = setInterval(() => changeSlide(1), 5000);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function updateSlideIndex() {
+  const indexDisplay = document.querySelector(".slide-index");
+  indexDisplay.textContent = `${slideIndex + 1} / ${slides.length}`;
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function updateDots() {
+  const dotsContainer = document.querySelector(".dots-container");
+  dotsContainer.innerHTML = "";
+  for (let i = 0; i < slides.length; i++) {
+    const dot = document.createElement("span");
+    dot.className = "dot" + (i === slideIndex ? " active" : "");
+    dotsContainer.appendChild(dot);
+  }
 }
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
+function showSlide(index) {
+  for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+  slides[index].style.display = "block";
+  updateSlideIndex();
+  updateDots();
 }
 
-function showSlidesMobile() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+function changeSlide(n) {
+  slideIndex += n;
+  if (slideIndex >= slides.length) slideIndex = 0;
+  if (slideIndex < 0) slideIndex = slides.length - 1;
+  showSlide(slideIndex);
+  resetTimer();
+}
+
+function resetTimer() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(() => changeSlide(1), 5000);
+}
+
+// Initial display
+showSlide(slideIndex);
+
+// Swipe support
+let startX = 0;
+let endX = 0;
+const container = document.querySelector(".slideshow-container");
+container.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+container.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const threshold = 50;
+  const distance = endX - startX;
+  if (Math.abs(distance) > threshold) {
+    if (distance > 0) {
+      changeSlide(-1); // Swipe right
+    } else {
+      changeSlide(1); // Swipe left
+    }
   }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+}
+
+function updateDots() {
+  const dotsContainer = document.querySelector(".dots-container");
+  dotsContainer.innerHTML = "";
+  for (let i = 0; i < slides.length; i++) {
+    const dot = document.createElement("span");
+    dot.className = "dot" + (i === slideIndex ? " active" : "");
+    dot.addEventListener("click", () => {
+      slideIndex = i;
+      showSlide(slideIndex);
+      resetTimer();
+    });
+    dotsContainer.appendChild(dot);
   }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
 }
